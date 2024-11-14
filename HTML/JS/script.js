@@ -1,37 +1,47 @@
-let correctWord = "spatula";  // The word you need to guess
-let hintIndex = 0;  // Keep track of which hint to show
-let hints = [
-  "I’m something you can find in a kitchen, and you’re likely to use me for cooking.",
-  "I’m often made of wood, plastic, or metal.",
-  "I’m used for flipping things in a frying pan or stirring food.",
-  "I have a long handle, and my head is flat."
-];
-let chances = 5;
+let randomNumber = Math.floor(Math.random() * 100) + 1;
+let attempts = 0;
 
-function checkGuess() {
-  let userGuess = document.getElementById("user-guess").value.toLowerCase().trim();
-  let messageElement = document.getElementById("message");
-  let chancesElement = document.getElementById("chances-left");
+const userInput = document.getElementById('userInput');
+const guessButton = document.getElementById('guessButton');
+const message = document.getElementById('message');
+const attemptsDisplay = document.getElementById('attempts');
+const resetButton = document.getElementById('resetButton');
 
-  if (userGuess === correctWord) {
-    messageElement.innerHTML = "Congratulations! You guessed the word!";
-    messageElement.style.color = "green";
-    document.getElementById("user-guess").disabled = true;
-    return;
+// Handle the Guess Button click event
+guessButton.addEventListener('click', function() {
+  const userGuess = parseInt(userInput.value);
+
+  if (isNaN(userGuess) || userGuess < 1 || userGuess > 100) {
+    message.textContent = "Please enter a number between 1 and 100.";
+    message.style.color = "red";
   } else {
-    chances--;
-    if (chances > 0) {
-      // Update hint and remaining chances
-      hintIndex = (hintIndex + 1) % hints.length;
-      document.getElementById("hint").innerHTML = hints[hintIndex];
-      messageElement.innerHTML = "Incorrect! Try again.";
-      chancesElement.innerHTML = `Chances Left: ${chances}`;
+    attempts++;
+    attemptsDisplay.textContent = attempts;
+
+    if (userGuess === randomNumber) {
+      message.textContent = `Correct! The number was ${randomNumber}. You guessed it in ${attempts} attempts!`;
+      message.style.color = "green";
+      guessButton.disabled = true;
+      resetButton.style.display = "block";
+    } else if (userGuess < randomNumber) {
+      message.textContent = "Too low! Try again.";
+      message.style.color = "orange";
     } else {
-      messageElement.innerHTML = "Game Over! The word was: " + correctWord;
-      messageElement.style.color = "red";
-      document.getElementById("user-guess").disabled = true;
+      message.textContent = "Too high! Try again.";
+      message.style.color = "orange";
     }
   }
 
-  document.getElementById("user-guess").value = "";
-}
+  userInput.value = ''; // Clear the input field
+});
+
+// Handle the Reset Button click event
+resetButton.addEventListener('click', function() {
+  randomNumber = Math.floor(Math.random() * 100) + 1;
+  attempts = 0;
+  attemptsDisplay.textContent = attempts;
+  message.textContent = '';
+  userInput.value = '';
+  guessButton.disabled = false;
+  resetButton.style.display = "none";
+});

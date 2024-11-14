@@ -1,57 +1,46 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: blue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .game-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-  }
-  
-  h1 {
-    color: #333;
-  }
-  
-  input {
-    padding: 8px;
-    width: 80%;
-    margin-top: 10px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    margin-top: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  #message {
-    margin-top: 15px;
-    font-weight: bold;
-  }
-  
-  #chances-left {
-    margin-top: 10px;
-  }
-  
+body {
+  font-family: Arial, sans-serif;
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.game-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+}
+
+input[type="number"] {
+  padding: 10px;
+  width: 50%;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:disabled {
+  background-color: #ccc;
+}
+
+p {
+  font-size: 16px;
+  margin: 10px 0;
+}
