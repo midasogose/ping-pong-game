@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess the Word Game</title>
+  <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1>Guess the Word Game</h1>
+    <p>Can you guess the word based on the hints?</p>
+    
+    <div id="hint-container">
+      <p><strong>Hint:</strong> <span id="hint">I’m something you can find in a kitchen, and you’re likely to use me for cooking.</span></p>
+    </div>
+
+    <input type="text" id="user-guess" placeholder="Enter your guess" />
+    <button onclick="checkGuess()">Submit Guess</button>
+
+    <p id="message"></p>
+    <p id="chances-left">Chances Left: 5</p>
+  </div>
+
+  <script src="JS/script.js"></script>
+</body>
+</html>
